@@ -1,7 +1,9 @@
-import Logo from './components/Logo';
-import Input from './components/Input';
+import Logo from './Logo';
+import Input from './Input';
+import RectButton from './RectButton'
 import styled from 'styled-components'
 import React from 'react';
+import { Link } from "react-router-dom";
 
 export default function Login(){
     return(
@@ -9,6 +11,12 @@ export default function Login(){
             <Logo />
             <Input placeholder='email'/>
             <Input placeholder='senha'/>
+            <RectButton text='Entrar'/>
+            <Link to='cadastro/'>
+                <SignIn>
+                    Não tem uma conta? Cadastre-se!
+                </SignIn>
+            </Link>
         </LoginContainer>
     )
 }
@@ -16,4 +24,10 @@ export default function Login(){
 const LoginContainer = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: center;
+`
+const SignIn = styled.div`
+    color: #52B6FF;
+    font-size: 14px;
+    text-decoration-line: underline;
 `
