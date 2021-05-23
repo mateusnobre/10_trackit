@@ -31,5 +31,6 @@ const LoginContainer = styled.div`
 const SignIn = styled.div`
     color: #52B6FF;
     font-size: 14px;
+    font-family: 'Lexend Deca', sans-serif;
     text-decoration-line: underline;
 `

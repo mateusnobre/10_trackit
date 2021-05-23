@@ -20,6 +20,7 @@ const InputContainer = styled.div`
         width: 303px;
         height: inherit;
         font-size: 20px;
+        font-family: 'Lexend Deca', sans-serif;
         padding-left: 10px;
         color: #DBDBDB;
         background-image:none;

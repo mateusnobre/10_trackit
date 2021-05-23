@@ -30,4 +30,5 @@ const SignIn = styled.div`
     color: #52B6FF;
     font-size: 14px;
     text-decoration-line: underline;
+    font-family: 'Lexend Deca', sans-serif;
 `

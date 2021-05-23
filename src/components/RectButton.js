@@ -20,4 +20,5 @@ const ButtonContainer = styled.div`
     line-height: 45px;
     text-align: center;
     border-radius: 5px;
+    font-family: 'Lexend Deca', sans-serif;
 `
