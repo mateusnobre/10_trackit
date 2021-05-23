@@ -1,4 +1,4 @@
-import Logo from './Logo';
+import Login from './Login';
 import React from 'react';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
@@ -7,7 +7,7 @@ export default function App() {
         <BrowserRouter>
 			<Switch>
 				<Route path="/" exact>
-                    <Logo />
+                    <Login />
                 </Route>
             </Switch>
 		</BrowserRouter>
