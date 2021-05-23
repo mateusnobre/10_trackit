@@ -1,15 +1,20 @@
 import styled from 'styled-components';
 import React from 'react';
+import logo_up1 from './assets/img/logo_up1.svg'
+import logo_up2 from './assets/img/logo_up2.svg'
+import logo_up3 from './assets/img/logo_up3.svg'
+import logo_down from './assets/img/logo_down.svg'
+
 export default function Logo(){
     return(
         <Flex>
             <LogoUp>
-                <img src='./assets/img/logo_up1.svg'></img>
-                <img src='./assets/img/logo_up2.svg'></img>
-                <img src='./assets/img/logo_up3.svg'></img>
+                <img src={logo_up1} alt='Logo Up1'></img>
+                <img src={logo_up2} alt='Logo Up2'></img>
+                <img src={logo_up3} alt='Logo Up3'></img>
             </LogoUp>
             <LogoDown>
-                <img src='./assets/img/logo_down.svg'></img>
+                <img src={logo_down} alt='Logo Down'></img>
             </LogoDown>
             <LogoText>
                 TrackIt
