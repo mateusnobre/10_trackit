@@ -11,6 +11,7 @@ import axios from 'axios'
 export default function Habits(){
     const {userData, setUserData} = useContext(UserContext)
     const[habitsData, setHabitsData] = useState([]);
+    const[loadHabits, setLoadHabits] = useState(0);
     const config = {
     	headers: {
     		"Authorization": `Bearer ${userData.token}`
@@ -20,13 +21,13 @@ export default function Habits(){
         const retrieveHabitsRequest = axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits' , config)
         retrieveHabitsRequest.then((response) => {setHabitsData(response.data)})
         retrieveHabitsRequest.catch((e) => {alert('Erro ao criar o hábito')})
-    }, [])
+    }, [loadHabits])
     return(
         <HabitsContainer>
             <Top />
             <HabitsTop />
             <CreateHabit token={userData.token}/>
-            {habitsData.map(habit => <Habit title={habit.name} days={habit.days}> </Habit>)}
+            {habitsData.map(habit => <Habit habitsReloader={setLoadHabits} habits={loadHabits}id={habit.id} config={config} title={habit.name} days={habit.days}> </Habit>)}
             <Text>
                 Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!
             </Text>

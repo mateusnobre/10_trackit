@@ -2,11 +2,20 @@ import React from 'react';
 import styled from 'styled-components';
 import Weekdays from './Weekdays';
 import delete_icon from './assets/img/delete.svg'
+import axios from 'axios'
 
 export default function Habit(props){
+    function deleteHabit(id){
+        let confirm = window.confirm('Você realmente deseja deletar este hábito?');
+        if (confirm){
+            const deleteHabitRequest = axios.delete(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}` , props.config)
+            deleteHabitRequest.then(() => {props.habitsReloader(props.loadHabits+1)})
+            deleteHabitRequest.catch((e) => {alert('Erro ao deletar o hábito')})
+        }
+    }
     return(
         <HabitContainer>
-            <img src={delete_icon} alt='delete'/>
+            <a onClick={() => deleteHabit(props.id)}><img src={delete_icon} alt='delete'/></a>
             <a>{props.title}</a>
             <Weekdays days={props.days} setDays={() => {}}/>
         </HabitContainer>
