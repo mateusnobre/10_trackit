@@ -5,9 +5,16 @@ import axios from 'axios'
 
 export default function TodayHabit(props){
     function markDone(id){
-        const markDoneRequest = axios.post(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}/check`, null, props.config)
-        markDoneRequest.then(() => props.setReloadTodayData(props.reloadTodayData+1))
-        markDoneRequest.catch((e) => {alert('Não foi possível marcar este hábito como feito'); console.log(e)})
+        if (!props.done){
+            const markDoneRequest = axios.post(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}/check`, null, props.config)
+            markDoneRequest.then(() => props.setReloadTodayData(props.reloadTodayData+1))
+            markDoneRequest.catch((e) => {alert('Não foi possível marcar este hábito como feito'); console.log(e)})
+        }
+        else if (props.done) {
+            const unmarkDoneRequest = axios.post(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}/uncheck`, null, props.config)
+            unmarkDoneRequest.then(() => props.setReloadTodayData(props.reloadTodayData+1))
+            unmarkDoneRequest.catch((e) => {alert('Não foi possível desmarcar este hábito como feito'); console.log(e)})
+        }
     }
     return(
         <TodayHabitContainer>
