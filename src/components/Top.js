@@ -34,5 +34,6 @@ const TopContainer = styled.div`
         object-fit: fill;
         width: 51px;
         height: 51px;
+        border-radius: 25.5px;
     }
 `

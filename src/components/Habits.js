@@ -20,7 +20,7 @@ export default function Habits(){
     useEffect(() => {
         const retrieveHabitsRequest = axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits' , config)
         retrieveHabitsRequest.then((response) => {setHabitsData(response.data)})
-        retrieveHabitsRequest.catch((e) => {alert('Erro ao criar o hábito')})
+        retrieveHabitsRequest.catch((e) => {alert('Não conseguimos puxar os hábitos do servidor')})
     }, [loadHabits])
     return(
         <HabitsContainer>

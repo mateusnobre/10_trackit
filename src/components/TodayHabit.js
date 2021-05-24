@@ -1,21 +1,27 @@
 import React from 'react'
 import styled from 'styled-components'
 import done from './assets/img/done.svg'
+import axios from 'axios'
 
-export default function TodayHabit(){
+export default function TodayHabit(props){
+    function markDone(id){
+        const markDoneRequest = axios.post(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}/check`, null, props.config)
+        markDoneRequest.then(() => props.setReloadTodayData(props.reloadTodayData+1))
+        markDoneRequest.catch((e) => {alert('Não foi possível marcar este hábito como feito'); console.log(e)})
+    }
     return(
         <TodayHabitContainer>
             <HabitsInfos>
-                <HabitTitle>Ler 1 capítulo de livro</HabitTitle>
+                <HabitTitle>{props.title}</HabitTitle>
                 <HabitStreak>
-                    Sequência atual: 3 dias
+                    Sequência atual: {props.currentSequence} dias
                 </HabitStreak>
                 <HabitStreak>
-                    Seu recorde: 5 dias
+                    Seu recorde: {props.longestSequence} dias
                 </HabitStreak>
             </HabitsInfos>
-            <IsDone>
-                <img src={done} alt='Done'/>
+            <IsDone isDone={props.done}>
+                <a onClick={() => markDone(props.id)}><img src={done} alt='Done'/></a>
             </IsDone>
         </TodayHabitContainer>
     )
@@ -52,7 +58,7 @@ const HabitStreak = styled.div`
 `
 
 const IsDone = styled.div`
-    background: #EBEBEB;
+    background: ${props => props.isDone? '#8FC549' : '#EBEBEB'};
     border: 1px solid #E7E7E7;
     box-sizing: border-box;
     border-radius: 5px;
