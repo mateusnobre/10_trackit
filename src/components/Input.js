@@ -1,11 +1,12 @@
 import styled from 'styled-components';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useState } from 'react'
+import UserContext from './contexts/UserContext'
+
 export default function Input(props){
-    const [input, setInput] = useState("");
     return(
         <InputContainer>
-        	<input placeholder={props.placeholder} value={input} onChange={event => setInput(event.target.value)}/>
+        	<input required type={props.type} placeholder={props.placeholder} value={props.input} onChange={event => props.setInput(event.target.value)}/>
         </InputContainer>
     )
 }

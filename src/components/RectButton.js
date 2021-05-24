@@ -1,12 +1,11 @@
 import styled from 'styled-components';
-import { Link } from "react-router-dom";
 import React from 'react';
 
 export default function RectButton(props){
     return(
-        <Link to={'hoje/'} style={{ textDecoration: 'none' }}>
-            <ButtonContainer>{props.text}</ButtonContainer>
-        </Link>
+        <ButtonContainer>
+            <button type='submit'>{props.text}</button>
+        </ButtonContainer>
     )
 }
 
@@ -21,4 +20,15 @@ const ButtonContainer = styled.div`
     text-align: center;
     border-radius: 5px;
     font-family: 'Lexend Deca', sans-serif;
+    button{
+        width: inherit;
+        height: inherit;
+        background: none;
+	    color: inherit;
+	    border: none;
+	    padding: 0;
+	    font: inherit;
+	    cursor: pointer;
+	    outline: inherit;
+    }
 `
