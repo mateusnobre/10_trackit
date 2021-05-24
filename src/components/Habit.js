@@ -8,7 +8,7 @@ export default function Habit(props){
         <HabitContainer>
             <img src={delete_icon} alt='delete'/>
             <a>{props.title}</a>
-            <Weekdays/>
+            <Weekdays days={props.days} setDays={() => {}}/>
         </HabitContainer>
     )
 }

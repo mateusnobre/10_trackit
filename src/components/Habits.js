@@ -4,28 +4,29 @@ import Habit from './Habit'
 import CreateHabit from './CreateHabit'
 import Bottom from './Bottom'
 import styled from 'styled-components'
-import React, { useState, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import UserContext from './contexts/UserContext'
+import axios from 'axios'
 
 export default function Habits(){
     const {userData, setUserData} = useContext(UserContext)
-    const [toggleCreateHabit,setToggleCreateHabit] = useState(1)
-    const habitsData;
+    const[habitsData, setHabitsData] = useState([]);
     const config = {
     	headers: {
-    		"Authorization": `Bearer ${props.token}`
+    		"Authorization": `Bearer ${userData.token}`
     	}
     }
-    
-    const createHabitRequest = axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits' , config)
-    createHabitRequest.then((response) => {habitsData = response.data})
-    createHabitRequest.catch((e) => {alert('Erro ao criar o hábito')})
+    useEffect(() => {
+        const retrieveHabitsRequest = axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits' , config)
+        retrieveHabitsRequest.then((response) => {setHabitsData(response.data)})
+        retrieveHabitsRequest.catch((e) => {alert('Erro ao criar o hábito')})
+    }, [])
     return(
         <HabitsContainer>
             <Top />
             <HabitsTop />
             <CreateHabit token={userData.token}/>
-            {habitsData.map()}
+            {habitsData.map(habit => <Habit title={habit.name} days={habit.days}> </Habit>)}
             <Text>
                 Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!
             </Text>
