@@ -2,11 +2,12 @@ import React from 'react'
 import styled from 'styled-components'
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-
+import {Link} from 'react-router-dom'
 export default function BottomProgressBar(props){
     return(
         <BottomProgressBarContainer>
-            <CircularProgressbar
+            <Link to='/hoje' exact>
+                <CircularProgressbar
                 value={props.percentage}
                 text='Hoje'
                 background
@@ -16,7 +17,9 @@ export default function BottomProgressBar(props){
                   textColor: "#fff",
                   pathColor: "#fff",
                   trailColor: "transparent",
-                })}></CircularProgressbar>
+                })}>
+                </CircularProgressbar>
+            </Link>
         </BottomProgressBarContainer>
     )
 }

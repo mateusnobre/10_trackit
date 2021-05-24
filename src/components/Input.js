@@ -5,7 +5,7 @@ export default function Input(props){
     const [input, setInput] = useState("");
     return(
         <InputContainer>
-        			<input placeholder={props.placeholder} value={input} onChange={event => setInput(event.target.value)}/>
+        	<input placeholder={props.placeholder} value={input} onChange={event => setInput(event.target.value)}/>
         </InputContainer>
     )
 }

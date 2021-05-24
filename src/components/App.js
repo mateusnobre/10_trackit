@@ -1,6 +1,7 @@
 import Login from './Login';
 import SignUp from './SignUp';
 import Today from './Today';
+import Habits from './Habits'
 import React from 'react';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
@@ -16,6 +17,9 @@ export default function App() {
                 </Route>
                 <Route path="/hoje" exact>
                     <Today />
+                </Route>
+                <Route path="/habitos" exact>
+                    <Habits />
                 </Route>
             </Switch>
 		</BrowserRouter>

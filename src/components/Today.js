@@ -1,11 +1,9 @@
-import Logo from './Logo';
 import Top from './Top';
 import TodayTop from './TodayTop'
 import TodayHabit from './TodayHabit'
 import Bottom from './Bottom'
 import styled from 'styled-components'
 import React from 'react';
-import { Link } from "react-router-dom";
 
 export default function Today(){
     return(
