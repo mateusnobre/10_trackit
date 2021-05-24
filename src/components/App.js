@@ -1,7 +1,8 @@
 import Login from './Login';
 import SignUp from './SignUp';
 import Today from './Today';
-import Habits from './Habits'
+import Habits from './Habits';
+import History from './History';
 import React from 'react';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
@@ -20,6 +21,9 @@ export default function App() {
                 </Route>
                 <Route path="/habitos" exact>
                     <Habits />
+                </Route>
+                <Route path="/historico" exact>
+                    <History />
                 </Route>
             </Switch>
 		</BrowserRouter>
