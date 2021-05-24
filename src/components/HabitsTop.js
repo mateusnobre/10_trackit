@@ -2,12 +2,15 @@ import React from 'react'
 import styled from 'styled-components'
 
 export default function HabitsTop(){
-return (
-    <HabitsTopContainer>
-        <a>Meus hábitos</a>
-        <CreateHabitButton>+</CreateHabitButton>
-    </HabitsTopContainer>
-)
+    function showCreateHabit(){
+        return 1
+    }
+    return (
+        <HabitsTopContainer>
+            <a>Meus hábitos</a>
+            <CreateHabitButton><button onClick={showCreateHabit}>+</button></CreateHabitButton>
+        </HabitsTopContainer>
+    )
 }
 
 
@@ -34,6 +37,17 @@ const CreateHabitButton = styled.div`
     text-align: center;
     line-height: 35px;
     border-radius: 5px;
+    button{
+        width: inherit;
+        height: inherit;
+        background: none;
+	    color: inherit;
+	    border: none;
+	    padding: 0;
+	    font: inherit;
+	    cursor: pointer;
+	    outline: inherit;
+    }
 `
 
 

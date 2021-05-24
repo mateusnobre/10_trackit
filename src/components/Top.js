@@ -1,12 +1,14 @@
-import sponge_bob from './assets/img/sponge_bob.svg'
 import styled from 'styled-components'
 import React from 'react'
+import {useContext} from 'react'
+import UserContext from './contexts/UserContext'
 
 export default function Top(){
+   const {userData, setUserData} = useContext(UserContext)
    return(
        <TopContainer>
            <a>TrackIt</a>
-           <img src={sponge_bob} alt='sponge_bob'/>
+           <img src={userData.image} alt='sponge_bob'/>
        </TopContainer>
    ) 
 }
@@ -29,5 +31,8 @@ const TopContainer = styled.div`
     }
     img{
         margin-right: 5%;
+        object-fit: fill;
+        width: 51px;
+        height: 51px;
     }
 `

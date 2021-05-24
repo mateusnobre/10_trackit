@@ -2,17 +2,46 @@ import {useState} from 'react'
 import styled from 'styled-components'
 import React from 'react'
 import Weekdays from './Weekdays'
+import axios from 'axios'
+
 export default function CreateHabit(props){
     const [input, setInput] = useState("");
+    const [days, setDays] = useState([]);
+    const [display, setDisplay] = useState('flex');
+    const config = {
+    	headers: {
+    		"Authorization": `Bearer ${props.token}`
+    	}
+    }
+    function createHabit(){
+        let data = {
+            'name': input,
+            'days': days
+        }
+        const createHabitRequest = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits', data, config)
+        createHabitRequest.then(
+            () => {
+                setInput("");
+                setDays([]);
+                setDisplay('none');
+            }
+        )
+        createHabitRequest.catch(
+            (e) => {
+                alert('Erro ao criar o hábito')
+            }
+        )
+    }
+
     return(
-        <CreateHabitContainer>
+        <CreateHabitContainer display={display}>
             <HabitTitle>
         	    <input placeholder={props.placeholder} value={input} onChange={event => setInput(event.target.value)}/>
             </HabitTitle>
-            <Weekdays/>
+            <Weekdays days={days} setDays={setDays}/>
             <Buttons>
-                <CancelButton>Cancelar</CancelButton>
-                <SaveButton>Salvar</SaveButton>
+                <CancelButton onClick={() => {setDisplay('None')}}><a>Cancelar</a></CancelButton>
+                <SaveButton onClick={createHabit}><a>Salvar</a></SaveButton>
             </Buttons>
         </CreateHabitContainer>
     )
@@ -24,7 +53,7 @@ const CreateHabitContainer = styled.div`
     border-radius: 5px;
     background-color: #FFFFFF;
     margin-bottom: 10px;
-    display: flex;
+    display: ${props => props.display};
     flex-direction: column;
     justify-content: center;
     align-items: center;

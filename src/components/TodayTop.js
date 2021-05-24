@@ -1,17 +1,41 @@
 import styled from 'styled-components'
 import React from 'react'
-
+import dayjs from 'dayjs'
 export default function TodayTop(){
-   return(
-       <TodayTopContainer>
-           <Weekday>
-                Segunda, 17/05
-           </Weekday>
-           <HabitsStatus>
-                Nenhum hábito concluído
-           </HabitsStatus>
-       </TodayTopContainer>
-   ) 
+    function weekday(number){
+        if(number == 0){
+            return 'Domingo'
+        }
+        else if(number == 1){
+            return'Segunda'
+        }
+        else if(number == 2){
+            return'Terça'
+        }
+        else if(number == 3){
+            return'Quarta'
+        }
+        else if(number == 4){
+            return'Quinta'
+        }
+        else if(number == 5){
+            return'Sexta'
+        }
+        else if(number == 6){
+            return'Sábado'
+        }
+        else return 'Out of range'
+    }
+    return(
+        <TodayTopContainer>
+            <Weekday>
+                 {weekday(dayjs().day())}, {dayjs().format('DD/MM')}
+            </Weekday>
+            <HabitsStatus>
+                 Nenhum hábito concluído
+            </HabitsStatus>
+        </TodayTopContainer>
+    ) 
 }
 
 const TodayTopContainer = styled.div`
