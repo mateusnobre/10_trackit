@@ -10,12 +10,11 @@ import UserContext from './contexts/UserContext';
 
 export default function App() {
     const[userData,  setUserData] = useState({
-        'nome': 'John Doe',
-        'email': 'john@mail.com',
-        'senha': '123',
+        'name': 'John Doe',
+        'image': 'john@mail.com',
+        'password': '123',
         'token': 'None',
-        'foto': 'X',
-        'dailyProgress': '50'
+        'dailyProgress': 50
     });
 
     return(

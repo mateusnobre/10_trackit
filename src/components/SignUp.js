@@ -3,7 +3,6 @@ import Input from './Input';
 import RectButton from './RectButton'
 import styled from 'styled-components'
 import React, { useState } from 'react';
-import UserContext from './contexts/UserContext'
 import { Link, useHistory } from "react-router-dom";
 import axios from 'axios';
 
@@ -28,7 +27,7 @@ export default function SignUp(){
         )
     }
     return(
-        <LoginContainer>
+        <SignUpContainer>
             <Logo />
             <form onSubmit={signUp}>
                 <Input placeholder='email' type='email' input={email} setInput={setEmail} />
@@ -39,14 +38,14 @@ export default function SignUp(){
             </form>
             <Link to='/'>
                 <SignIn>
-                    Já tem uma conta? Faça login!
+                    Já tem uma conta? Faça SignUp!
                 </SignIn>
             </Link>
-        </LoginContainer>
+        </SignUpContainer>
     )
 }
 
-const LoginContainer = styled.div`
+const SignUpContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
