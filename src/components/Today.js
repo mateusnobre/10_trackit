@@ -36,7 +36,7 @@ export default function Today(){
     return(
         <TodayContainer>
             <Top />
-            <TodayTop />
+            <TodayTop progress={userData.dailyProgress}/>
             {todayHabitsData.map(todayHabit => <TodayHabit reloadTodayData={reloadTodayData} setReloadTodayData={setReloadTodayData} config={config} id={todayHabit.id} title={todayHabit.name} currentSequence={todayHabit.currentSequence} longestSequence={todayHabit.longestSequence} done={todayHabit.done}> </TodayHabit>)}
             <Bottom/>
         </TodayContainer>

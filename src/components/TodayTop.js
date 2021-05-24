@@ -35,6 +35,9 @@ export default function TodayTop(props){
             <HabitsStatus progress={props.progress}>
                  Nenhum hábito concluído
             </HabitsStatus>
+            <HabitsProgress progress={props.progress}>
+                 {props.progress}% dos hábitos concluídos
+            </HabitsProgress>
         </TodayTopContainer>
     ) 
 }
@@ -69,4 +72,10 @@ const HabitsStatus = styled.div`
     font-size: 23px;
     font-family: Lexend Deca;
     display: ${props => props.progress > 0 ? 'none' : 'block'};
+`
+const HabitsProgress = styled.div`
+    color: #8FC549;
+    font-size: 23px;
+    font-family: Lexend Deca;
+    display: ${props => props.progress > 0 ? 'block' : 'none'};
 `
