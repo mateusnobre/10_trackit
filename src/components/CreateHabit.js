@@ -7,7 +7,6 @@ import axios from 'axios'
 export default function CreateHabit(props){
     const [input, setInput] = useState("");
     const [days, setDays] = useState([]);
-    const [display, setDisplay] = useState('flex');
     const config = {
     	headers: {
     		"Authorization": `Bearer ${props.token}`
@@ -23,7 +22,7 @@ export default function CreateHabit(props){
             () => {
                 setInput("");
                 setDays([]);
-                setDisplay('none');
+                props.setShow(false);
             }
         )
         createHabitRequest.catch(
@@ -34,13 +33,13 @@ export default function CreateHabit(props){
     }
 
     return(
-        <CreateHabitContainer display={display}>
+        <CreateHabitContainer show={props.show}>
             <HabitTitle>
         	    <input placeholder={props.placeholder} value={input} onChange={event => setInput(event.target.value)}/>
             </HabitTitle>
             <Weekdays days={days} setDays={setDays}/>
             <Buttons>
-                <CancelButton onClick={() => {setDisplay('None')}}><a>Cancelar</a></CancelButton>
+                <CancelButton onClick={() => {props.setShow(false)}}><a>Cancelar</a></CancelButton>
                 <SaveButton onClick={createHabit}><a>Salvar</a></SaveButton>
             </Buttons>
         </CreateHabitContainer>
@@ -53,7 +52,7 @@ const CreateHabitContainer = styled.div`
     border-radius: 5px;
     background-color: #FFFFFF;
     margin-bottom: 10px;
-    display: ${props => props.display};
+    display: ${props => props.show? 'flex' : 'none'};
     flex-direction: column;
     justify-content: center;
     align-items: center;

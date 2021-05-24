@@ -10,8 +10,10 @@ import axios from 'axios'
 
 export default function Habits(){
     const {userData, setUserData} = useContext(UserContext)
+    const[numberOfHabits,setNumberOfHabits] = useState(0);
     const[habitsData, setHabitsData] = useState([]);
     const[loadHabits, setLoadHabits] = useState(0);
+    const[showCreateHabit, setShowCreateHabit] = useState(true)
     const config = {
     	headers: {
     		"Authorization": `Bearer ${userData.token}`
@@ -19,16 +21,15 @@ export default function Habits(){
     }
     useEffect(() => {
         const retrieveHabitsRequest = axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits' , config)
-        retrieveHabitsRequest.then((response) => {setHabitsData(response.data)})
-        retrieveHabitsRequest.catch((e) => {alert('Não conseguimos puxar os hábitos do servidor')})
+        retrieveHabitsRequest.then((response) => {setHabitsData(response.data); setNumberOfHabits(response.data.length)})
     }, [loadHabits])
     return(
         <HabitsContainer>
             <Top />
-            <HabitsTop />
-            <CreateHabit token={userData.token}/>
+            <HabitsTop show={showCreateHabit} setShow={setShowCreateHabit}/>
+            <CreateHabit token={userData.token} setShow={setShowCreateHabit} show={showCreateHabit}/>
             {habitsData.map(habit => <Habit habitsReloader={setLoadHabits} habits={loadHabits}id={habit.id} config={config} title={habit.name} days={habit.days}> </Habit>)}
-            <Text>
+            <Text show={numberOfHabits > 0? false : true}>
                 Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!
             </Text>
             <Bottom />
@@ -50,4 +51,5 @@ const Text = styled.div`
     font-family: Lexend Deca;
     margin-top: 29px;
     color: #666666;
+    display: ${props => props.show? 'block' : 'none'};
 `

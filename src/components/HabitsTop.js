@@ -1,14 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export default function HabitsTop(){
+export default function HabitsTop(props){
     function showCreateHabit(){
-        return 1
+        if(props.show){
+            props.setShow(false);
+        }
+        else{
+            props.setShow(true);
+        }
     }
     return (
         <HabitsTopContainer>
             <a>Meus hábitos</a>
-            <CreateHabitButton><button onClick={showCreateHabit}>+</button></CreateHabitButton>
+            <a onClick={() => showCreateHabit()}><CreateHabitButton>+</CreateHabitButton></a>
         </HabitsTopContainer>
     )
 }

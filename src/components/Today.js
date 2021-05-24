@@ -23,10 +23,7 @@ export default function Today(){
                 progress = progress + 1
             }
         }
-        console.log(progress)
-        console.log(data.length)
         progress = 100*progress/data.length
-        console.log({...userData, 'dailyProgress': progress})
         setUserData({...userData, 'dailyProgress': progress})
     }
     useEffect(() => {
