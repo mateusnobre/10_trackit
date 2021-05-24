@@ -9,7 +9,7 @@ export default function Login(){
     return(
         <LoginContainer>
             <Logo />
-            <Input placeholder='email'/>
+            <Input placeholder='email' />
             <Input placeholder='senha'/>
             <Input placeholder='nome'/>
             <Input placeholder='foto'/>

@@ -1,7 +1,5 @@
-import sponge_bob from './assets/img/sponge_bob.svg'
 import styled from 'styled-components'
 import React from 'react'
-import DayJS from 'react-dayjs'
 
 export default function TodayTop(){
    return(
