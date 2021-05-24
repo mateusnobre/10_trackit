@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 import React from 'react'
 import dayjs from 'dayjs'
-export default function TodayTop(){
+
+export default function TodayTop(props){
     function weekday(number){
         if(number == 0){
             return 'Domingo'
@@ -31,7 +32,7 @@ export default function TodayTop(){
             <Weekday>
                  {weekday(dayjs().day())}, {dayjs().format('DD/MM')}
             </Weekday>
-            <HabitsStatus>
+            <HabitsStatus progress={props.progress}>
                  Nenhum hábito concluído
             </HabitsStatus>
         </TodayTopContainer>
@@ -67,4 +68,5 @@ const HabitsStatus = styled.div`
     color: #BABABA;
     font-size: 23px;
     font-family: Lexend Deca;
+    display: ${props => props.progress > 0 ? 'none' : 'block'};
 `

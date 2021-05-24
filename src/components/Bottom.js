@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { useContext} from 'react'
 import BottomProgressBar from './BottomProgressBar'
 import { Link } from "react-router-dom";
 import styled from 'styled-components'
+import UserContext from './contexts/UserContext'
 
 export default function Bottom(){
+    const {userData, setUserData} = useContext(UserContext)
     return(
         <BottomContainer>
             <Link to='/habitos/' style={{ textDecoration: 'none' }}>
                 <ButtonText>Hábitos</ButtonText>
             </Link>
-            <BottomProgressBar percentage={12}/>
+            <BottomProgressBar percentage={userData.dailyProgress}/>
             <Link to='/historico/' style={{ textDecoration: 'none' }}>
                 <ButtonText>Histórico</ButtonText>
             </Link>

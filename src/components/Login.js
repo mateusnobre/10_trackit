@@ -25,7 +25,7 @@ export default function Login(){
                     image: loginRequest.data.image,
                     email: loginRequest.data.email,
                     token: loginRequest.data.token,
-                    progress: 0
+                    dailyProgress: 0
                 }
                 setUserData(newUserData);
                 let path = '/hoje';

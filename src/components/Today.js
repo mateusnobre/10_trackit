@@ -16,17 +16,29 @@ export default function Today(){
     		"Authorization": `Bearer ${userData.token}`
     	}
     }
+    function setProgress(data){
+        let progress = 0
+        for (var i = 0; i < data.length; i++){
+            if(data[i].done){
+                progress = progress + 1
+            }
+        }
+        console.log(progress)
+        console.log(data.length)
+        progress = 100*progress/data.length
+        console.log({...userData, 'dailyProgress': progress})
+        setUserData({...userData, 'dailyProgress': progress})
+    }
     useEffect(() => {
         const retrieveTodayHabitsRequest = axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today', config)
-        retrieveTodayHabitsRequest.then((response) => {setTodayHabitsData(response.data)})
-        retrieveTodayHabitsRequest.catch((e) => {alert('Não foi possível puxar os hábitos de hoje')})
+        retrieveTodayHabitsRequest.then((response) => {setTodayHabitsData(response.data); setProgress(response.data)})
     }, [reloadTodayData])
     return(
         <TodayContainer>
             <Top />
             <TodayTop />
             {todayHabitsData.map(todayHabit => <TodayHabit reloadTodayData={reloadTodayData} setReloadTodayData={setReloadTodayData} config={config} id={todayHabit.id} title={todayHabit.name} currentSequence={todayHabit.currentSequence} longestSequence={todayHabit.longestSequence} done={todayHabit.done}> </TodayHabit>)}
-            <Bottom />
+            <Bottom/>
         </TodayContainer>
     )
 }

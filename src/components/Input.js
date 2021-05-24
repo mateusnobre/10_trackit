@@ -1,7 +1,5 @@
 import styled from 'styled-components';
-import React, { useContext } from 'react';
-import { useState } from 'react'
-import UserContext from './contexts/UserContext'
+import React from 'react';
 
 export default function Input(props){
     return(
